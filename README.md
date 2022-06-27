@@ -1,4 +1,4 @@
-# go-prql
+# Go PRQL
 
 Go module/implementation for the [PRQL](https://prql-lang.org) pipelined query language.
 
