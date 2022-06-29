@@ -7,7 +7,7 @@ import (
 )
 
 // Dialect is a byte enum representing the accepted dialects. This is declared
-// by the top-level "prsql" expression.
+// by the top-level "prql" expression.
 type Dialect byte
 
 const (

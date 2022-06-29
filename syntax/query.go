@@ -7,13 +7,13 @@ import (
 	"github.com/chris-pikul/go-prql/utils"
 )
 
-// Query represents the top-level "prsql" dialect and version declaration
+// Query represents the top-level "prql" dialect and version declaration
 type Query struct {
 	Version utils.Optional[int]
 	Dialect Dialect
 }
 
-// String returns the PRSQL expression for defining this Query.
+// String returns the PRQL expression for defining this Query.
 func (q Query) String() string {
 	var str strings.Builder
 	str.WriteString("prsql")
