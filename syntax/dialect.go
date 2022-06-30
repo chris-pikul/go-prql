@@ -23,6 +23,7 @@ const (
 	DialectSnowflake
 )
 
+// holds Dialect -> string mapping
 var dialectStringMap = map[Dialect]string{
 	DialectGeneric:    "generic",
 	DialectANSI:       "ansi",
@@ -36,13 +37,16 @@ var dialectStringMap = map[Dialect]string{
 	DialectSnowflake:  "snowflake",
 }
 
+// holds string -> Dialect mapping
+var dialectDialectMap = utils.InvertMap(dialectStringMap)
+
 // String returns the string representation of the underlying Dialect enum. If
 // invalid, defaults to returning "generic".
 func (d Dialect) String() string {
-	str, ok := dialectStringMap[d]
-	if ok {
+	if str, ok := dialectStringMap[d]; ok {
 		return str
 	}
+
 	return "generic"
 }
 
@@ -53,9 +57,8 @@ func (d Dialect) String() string {
 // Important: this is CASE-SENSITIVE.
 func (d *Dialect) UnmarshalText(text []byte) error {
 	str := string(text)
-	if key, ok := utils.KeyForValue(dialectStringMap, str); ok {
-		*d = *key
-		return nil
+	if dial, ok := dialectDialectMap[str]; ok {
+		*d = dial
 	}
-	return fmt.Errorf("text '%s' is not a valid Dialect", str)
+	return fmt.Errorf("invalid Dialect '%s'", str)
 }
