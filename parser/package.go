@@ -2,7 +2,9 @@
 // tokenizing, and generating a workable AST (Abstract Syntax Tree).
 package parser
 
-import "github.com/chris-pikul/go-prql"
+import (
+	"github.com/chris-pikul/go-prql"
+)
 
 // AST Dummy type alias.
 type AST = map[string]string
@@ -12,5 +14,7 @@ type AST = map[string]string
 //
 // Returns the AST, and a PRQLError for any errors occuring during parsing.
 func Parse(source string) (AST, *prql.Error) {
+	// Tokenize the input to normalize it
+	tokenize(source)
 	return nil, nil
 }

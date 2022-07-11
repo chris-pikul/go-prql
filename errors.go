@@ -1,6 +1,8 @@
 package prql
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Error wraps a generic Go error with more context for PRQL parsing and
 // generation.
@@ -29,4 +31,14 @@ func (e Error) Error() string {
 // NewError creates a new Error.
 func NewError(errType ErrorType, parent error) Error {
 	return Error{errType, parent}
+}
+
+// NewSyntaxErrorf generates a new Error with a pre-defined ErrorType of
+// ErrorTypeSyntax, and provides a string style formatting for generating the
+// parernt error object within it.
+func NewSyntaxErrorf(format string, args ...interface{}) Error {
+	return Error{
+		ErrorTypeSyntax,
+		fmt.Errorf(format, args...),
+	}
 }
