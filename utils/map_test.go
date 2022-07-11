@@ -29,3 +29,22 @@ func TestKeyForValue(t *testing.T) {
 		t.Error("expected nil value on invalid search value")
 	}
 }
+
+func TestInvertMap(t *testing.T) {
+	tstMap := map[string]int{
+		"first":  1,
+		"second": 2,
+		"third":  3,
+	}
+
+	newMap := utils.InvertMap(tstMap)
+	for key, val := range newMap {
+		if tst, ok := tstMap[val]; !ok || tst != key {
+			if !ok {
+				t.Error("expected valid key after inversion")
+			} else {
+				t.Errorf("invalid key-value for %s, expected %d received %d", val, key, tst)
+			}
+		}
+	}
+}
