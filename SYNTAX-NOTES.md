@@ -3,6 +3,21 @@
 This document holds some notes, tips, and documentation on the PRQL syntax and
 some RFC comments on ways to improve the parsing.
 
+## Table of Contents
+
+- [Syntax - General lexiconal grammar and explanation](#syntax)
+- [Header Directive](#header-directive)
+  - [Dialect](#dialect)
+  - [Version](#version)
+- [Functions](#functions)
+  - [Named-Parameters](#named-parameters)
+  - [Positional-Parameters](#positional-parameters)
+  - [Function Body](#function-body)
+  - [Usage - Calling/Invocing](#function-usage)
+    - [Explicit Invocation](#explicit-invocation)
+    - [Implied Invocation](#implicit-invocation)
+  - [Function as a Constant](#function-as-a-constant)
+
 ## Syntax
 
 The basic syntax of PRQL follows _statements_ which are delimeted by either an
